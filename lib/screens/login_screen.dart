@@ -1,4 +1,7 @@
+import 'package:cbm_app_training/screens/identity_clarification.dart';
 import 'package:flutter/material.dart';
+import '../widgets/input_field.dart';
+import '../widgets/button.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -6,6 +9,8 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(),
       body: Stack(
         children: [
           Container(
@@ -36,46 +41,13 @@ class LoginScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  const TextField(
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                        borderSide: BorderSide(
-                          color: Color.fromARGB(255, 111, 110, 110),
-                        ),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(8)),
-                      ),
-                      fillColor: Colors.white,
-                      hintText: 'Username',
-                      hintStyle: TextStyle(
-                        color: Color.fromARGB(255, 111, 110, 110),
-                      ),
-                    ),
-                  ),
+                  const InputField(hintText: 'Email'),
                   const Padding(
                     padding: EdgeInsets.all(10),
                   ),
-                  const TextField(
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                        borderSide: BorderSide(
-                          color: Color.fromARGB(255, 111, 110, 110),
-                        ),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(8)),
-                      ),
-                      fillColor: Colors.white,
-                      hintText: 'Password',
-                      suffixIcon: Icon(Icons.visibility_off_outlined,
-                          color: Colors.grey, size: 22),
-                      hintStyle: TextStyle(
-                        color: Color.fromARGB(255, 111, 110, 110),
-                      ),
-                    ),
+                  const InputField(
+                    hintText: 'Password',
+                    icon: Icons.visibility_off_rounded,
                   ),
                   const Padding(
                     padding: EdgeInsets.all(10),
@@ -95,29 +67,24 @@ class LoginScreen extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.all(10),
                   ),
-                  Container(
-                    width: double.infinity,
-                    height: 55,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25),
-                        color: const Color.fromARGB(255, 69, 48, 137)),
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        shadowColor: Colors.transparent,
-                        foregroundColor: Colors.white,
-                        textStyle: const TextStyle(fontSize: 17),
-                      ),
-                      child: const Text('Login'),
-                    ),
+                  Button(
+                    text: 'Login',
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const IdentityClarification(),
+                        ),
+                      );
+                    },
+                    borderRadius: BorderRadius.circular(20),
                   ),
                   const Padding(
                     padding: EdgeInsets.all(10),
                   ),
                   Container(
                     width: double.infinity,
-                    height: 55,
+                    height: 45,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
