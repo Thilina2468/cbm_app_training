@@ -26,23 +26,27 @@ class IdentityClarification extends StatelessWidget {
             heading: 'About you',
             description: 'Your citizenship and personal details.',
             icon: Icons.person_outline_rounded,
+            isComplete: false,
           ),
           const VerificationTile(
             heading: 'Your identity',
             description: 'Checking to make sure you and your ID match.',
             icon: Icons.badge_outlined,
+            isComplete: false,
           ),
           const VerificationTile(
             heading: 'Other Documents',
             description:
                 'Processing of transactions and services that require your authorization.',
             icon: Icons.description_outlined,
+            isComplete: false,
           ),
           const VerificationTile(
             heading: 'Billing Proof',
             description:
                 'Checking to make sure you are an permanent residence.',
             icon: Icons.payment_outlined,
+            isComplete: false,
           ),
           Button(
             text: 'Next',
