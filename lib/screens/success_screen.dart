@@ -1,4 +1,5 @@
 import 'package:cbm_app_training/screens/login_screen.dart';
+import 'package:cbm_app_training/widgets/background_template.dart';
 import 'package:cbm_app_training/widgets/button.dart';
 import 'package:flutter/material.dart';
 
@@ -11,47 +12,19 @@ class SuccessScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       body: Stack(
         children: [
-          Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Color(0xFF4A148C),
-                  Color(0xFF281865),
-                  Color(0xFF1A1245),
-                ],
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              height: 150,
-              padding: const EdgeInsets.all(40),
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  topRight: Radius.circular(10),
-                ),
-              ),
-              child: Button(
-                text: "Let's Go",
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const LoginScreen(),
-                    ),
-                  );
-                },
-                borderRadius: BorderRadius.circular(18),
-              ),
+          BackgroundTemplate(
+            cardHeight: 150,
+            child: Button(
+              text: "Let's Go",
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LoginScreen(),
+                  ),
+                );
+              },
+              borderRadius: BorderRadius.circular(18),
             ),
           ),
           Container(
@@ -87,7 +60,6 @@ class SuccessScreen extends StatelessWidget {
               ],
             ),
           ),
-          
         ],
       ),
     );

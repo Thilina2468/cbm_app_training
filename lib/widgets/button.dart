@@ -4,12 +4,14 @@ class Button extends StatelessWidget {
   final String text;
   final BorderRadiusGeometry borderRadius;
   final VoidCallback onPressed;
+  final bool isTransparent;
 
   const Button({
     super.key,
     required this.text,
     required this.onPressed,
     required this.borderRadius,
+    this.isTransparent = false,
   });
 
   @override
@@ -18,14 +20,25 @@ class Button extends StatelessWidget {
       width: double.infinity,
       height: 45,
       decoration: BoxDecoration(
-          borderRadius: borderRadius,
-          color: const Color.fromARGB(255, 69, 48, 137)),
+        borderRadius: borderRadius,
+        color: isTransparent
+            ? Colors.transparent
+            : const Color.fromARGB(255, 69, 48, 137),
+        border: isTransparent
+            ? Border.all(
+                color: const Color.fromARGB(255, 69, 48, 137),
+                width: 1.5,
+              )
+            : null,
+      ),
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
-          foregroundColor: Colors.white,
+          foregroundColor: isTransparent
+              ? const Color.fromARGB(255, 69, 48, 137)
+              : Colors.white,
           textStyle: const TextStyle(fontSize: 17),
         ),
         child: Text(text),
