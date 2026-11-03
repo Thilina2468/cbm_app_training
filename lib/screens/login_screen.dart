@@ -4,9 +4,14 @@ import 'package:flutter/material.dart';
 import '../widgets/input_field.dart';
 import '../widgets/button.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,109 +24,112 @@ class LoginScreen extends StatelessWidget {
           BackgroundTemplate(
             title: 'Login',
             subtitle: 'Please login to your account',
-            child: Column(
-              children: [
-                const InputField(hintText: 'Email'),
-                const Padding(
-                  padding: EdgeInsets.all(10),
-                ),
-                const InputField(
-                  hintText: 'Password',
-                  icon: Icons.visibility_off_rounded,
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(10),
-                ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      'Forgot Password?',
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 111, 110, 110),
-                        fontSize: 14,
+            child: Form(
+              child: Column(
+                children: [
+                  const InputField(hintText: 'Email'),
+                  const Padding(
+                    padding: EdgeInsets.all(10),
+                  ),
+                  const InputField(
+                    hintText: 'Password',
+                    icon: Icons.visibility_off_rounded,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(10),
+                  ),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        'Forgot Password?',
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 111, 110, 110),
+                          fontSize: 14,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(10),
-                ),
-                Button(
-                  text: 'Login',
-                  onPressed: () {},
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(10),
-                ),
-                Button(
-                  text: 'Register',
-                  isTransparent: true,
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const IdentityClarification(),
-                      ),
-                    );
-                  },
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(10),
-                ),
-                const Divider(
-                  color: Color.fromARGB(255, 141, 140, 140),
-                  thickness: 1,
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(10),
-                ),
-                const Text(
-                  'Kill Account',
-                  style: TextStyle(
+                    ],
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(10),
+                  ),
+                  Button(
+                    text: 'Login',
+                    onPressed: () {},
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(10),
+                  ),
+                  Button(
+                    text: 'Register',
+                    isTransparent: true,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const IdentityClarification(),
+                        ),
+                      );
+                      
+                    },
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(10),
+                  ),
+                  const Divider(
                     color: Color.fromARGB(255, 141, 140, 140),
-                    fontSize: 17,
+                    thickness: 1,
                   ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(15),
-                ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      'Need Help?',
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 69, 48, 137),
-                        fontSize: 15,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(10),
-                    ),
-                    Text(
-                      'More Info',
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 111, 110, 110),
-                        fontSize: 15,
-                      ),
-                    ),
-                  ],
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(30),
-                ),
-                const Text(
-                  'By using My CBM, you agree to our Terms of use and Privacy Policy',
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 111, 110, 110),
-                    fontSize: 16,
+                  const Padding(
+                    padding: EdgeInsets.all(10),
                   ),
-                  textAlign: TextAlign.center,
-                ),
-              ],
+                  const Text(
+                    'Kill Account',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 141, 140, 140),
+                      fontSize: 17,
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(15),
+                  ),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        'Need Help?',
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 69, 48, 137),
+                          fontSize: 15,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(10),
+                      ),
+                      Text(
+                        'More Info',
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 111, 110, 110),
+                          fontSize: 15,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(30),
+                  ),
+                  const Text(
+                    'By using My CBM, you agree to our Terms of use and Privacy Policy',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 111, 110, 110),
+                      fontSize: 16,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
             ),
           ),
           Padding(

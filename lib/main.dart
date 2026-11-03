@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'bloc/identity/identity_bloc.dart';
 import 'screens/login_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,16 +13,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        textTheme: GoogleFonts.poppinsTextTheme(),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
+    return BlocProvider(
+      create: (context) => IdentityBloc(),
+      child: MaterialApp(
+        theme: ThemeData(
+          textTheme: GoogleFonts.poppinsTextTheme(),
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+          ),
         ),
+        debugShowCheckedModeBanner: false,
+        home: const LoginScreen(),
       ),
-      debugShowCheckedModeBanner: false,
-      home: const LoginScreen(),
     );
   }
 }

@@ -12,21 +12,25 @@ class InputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       decoration: InputDecoration(
         enabledBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(15)),
           borderSide: BorderSide(
-            color: Color.fromARGB(255, 111, 110, 110),
+            color: Color.fromARGB(255, 148, 147, 147),
           ),
         ),
         focusedBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(8)),
+          borderSide: BorderSide(
+            color: Color.fromARGB(255, 88, 88, 88),
+          ),
         ),
         fillColor: Colors.white,
-        hintText: hintText,
-        hintStyle: const TextStyle(
-          color: Color.fromARGB(255, 111, 110, 110),
+        labelText: hintText,
+        labelStyle: const TextStyle(
+          color: Color.fromARGB(255, 148, 147, 147),
+          fontSize: 14,
         ),
         suffixIcon: icon == null
             ? null
