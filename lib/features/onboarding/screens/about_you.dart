@@ -1,9 +1,9 @@
-import 'package:kyc_practice_app/bloc/onboarding/pages/about_you/about_you_bloc.dart';
-import 'package:kyc_practice_app/bloc/onboarding/pages/about_you/about_you_event.dart';
-import 'package:kyc_practice_app/widgets/background_template.dart';
-import 'package:kyc_practice_app/widgets/button.dart';
-import 'package:kyc_practice_app/widgets/date.dart';
-import 'package:kyc_practice_app/widgets/input_field.dart';
+import 'package:kyc_practice_app/features/onboarding/bloc/pages/about_you/about_you_bloc.dart';
+import 'package:kyc_practice_app/features/onboarding/bloc/pages/about_you/about_you_event.dart';
+import 'package:kyc_practice_app/core/widgets/background_template.dart';
+import 'package:kyc_practice_app/core/widgets/button.dart';
+import 'package:kyc_practice_app/core/widgets/date.dart';
+import 'package:kyc_practice_app/core/widgets/input_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

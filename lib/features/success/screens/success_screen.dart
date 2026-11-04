@@ -1,6 +1,6 @@
-import 'package:kyc_practice_app/screens/login_screen.dart';
-import 'package:kyc_practice_app/widgets/background_template.dart';
-import 'package:kyc_practice_app/widgets/button.dart';
+import 'package:kyc_practice_app/features/auth/screens/login_screen.dart';
+import 'package:kyc_practice_app/core/widgets/background_template.dart';
+import 'package:kyc_practice_app/core/widgets/button.dart';
 import 'package:flutter/material.dart';
 
 class SuccessScreen extends StatelessWidget {

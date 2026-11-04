@@ -1,8 +1,8 @@
-import 'package:kyc_practice_app/bloc/onboarding/pages/work_permit/work_permit_bloc.dart';
-import 'package:kyc_practice_app/bloc/onboarding/pages/work_permit/work_permit_event.dart';
-import 'package:kyc_practice_app/widgets/background_template.dart';
-import 'package:kyc_practice_app/widgets/button.dart';
-import 'package:kyc_practice_app/widgets/checklist.dart';
+import 'package:kyc_practice_app/features/onboarding/bloc/pages/work_permit/work_permit_bloc.dart';
+import 'package:kyc_practice_app/features/onboarding/bloc/pages/work_permit/work_permit_event.dart';
+import 'package:kyc_practice_app/core/widgets/background_template.dart';
+import 'package:kyc_practice_app/core/widgets/button.dart';
+import 'package:kyc_practice_app/core/widgets/checklist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

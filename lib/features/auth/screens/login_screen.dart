@@ -1,7 +1,7 @@
-import 'package:kyc_practice_app/screens/onboarding_steps.dart';
-import 'package:kyc_practice_app/widgets/background_template.dart';
-import 'package:kyc_practice_app/widgets/button.dart';
-import 'package:kyc_practice_app/widgets/input_field.dart';
+import 'package:kyc_practice_app/features/onboarding/screens/onboarding_steps.dart';
+import 'package:kyc_practice_app/core/widgets/background_template.dart';
+import 'package:kyc_practice_app/core/widgets/button.dart';
+import 'package:kyc_practice_app/core/widgets/input_field.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
