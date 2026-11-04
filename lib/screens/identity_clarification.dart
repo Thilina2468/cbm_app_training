@@ -1,7 +1,7 @@
-import 'package:cbm_app_training/screens/national_id_clarification.dart';
-import 'package:cbm_app_training/widgets/background_template.dart';
-import 'package:cbm_app_training/widgets/button.dart';
-import 'package:cbm_app_training/widgets/checklist.dart';
+import 'package:kyc_practice_app/screens/national_id_clarification.dart';
+import 'package:kyc_practice_app/widgets/background_template.dart';
+import 'package:kyc_practice_app/widgets/button.dart';
+import 'package:kyc_practice_app/widgets/checklist.dart';
 import 'package:flutter/material.dart';
 
 class IdentityClarification extends StatefulWidget {

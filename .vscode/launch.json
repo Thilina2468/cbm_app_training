@@ -5,20 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "cbm_app_training",
+            "name": "kyc_practice_app",
             "request": "launch",
             "type": "dart",
             "deviceId": "emulator-5554"
         },
         {
-            "name": "cbm_app_training (profile mode)",
+            "name": "kyc_practice_app (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile",
             "deviceId": "emulator-5554"
         },
         {
-            "name": "cbm_app_training (release mode)",
+            "name": "kyc_practice_app (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release",

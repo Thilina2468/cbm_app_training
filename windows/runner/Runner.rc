@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "cbm_app_training" "\0"
+            VALUE "FileDescription", "KYC Practice App" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "cbm_app_training" "\0"
+            VALUE "InternalName", "kyc_practice_app" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2026 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "cbm_app_training.exe" "\0"
-            VALUE "ProductName", "cbm_app_training" "\0"
+            VALUE "OriginalFilename", "kyc_practice_app.exe" "\0"
+            VALUE "ProductName", "KYC Practice App" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

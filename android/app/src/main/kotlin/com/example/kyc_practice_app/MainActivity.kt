@@ -1,4 +1,4 @@
-package com.example.cbm_app_training
+package com.example.kyc_practice_app
 
 import io.flutter.embedding.android.FlutterActivity
 

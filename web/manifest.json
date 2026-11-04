@@ -1,6 +1,6 @@
 {
-    "name": "cbm_app_training",
-    "short_name": "cbm_app_training",
+    "name": "KYC Practice App",
+    "short_name": "KYC Practice App",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
