@@ -1,10 +1,13 @@
 import 'package:cbm_app_training/bloc/onboarding/pages/about_you/about_you_bloc.dart';
 import 'package:cbm_app_training/bloc/onboarding/pages/about_you/about_you_state.dart';
+import 'package:cbm_app_training/bloc/onboarding/pages/billing/billing_bloc.dart';
+import 'package:cbm_app_training/bloc/onboarding/pages/billing/billing_state.dart';
 import 'package:cbm_app_training/bloc/onboarding/pages/identity/identity_bloc.dart';
 import 'package:cbm_app_training/bloc/onboarding/pages/identity/identity_state.dart';
 import 'package:cbm_app_training/bloc/onboarding/pages/work_permit/work_permit_bloc.dart';
 import 'package:cbm_app_training/bloc/onboarding/pages/work_permit/work_permit_state.dart';
 import 'package:cbm_app_training/screens/about_you.dart';
+import 'package:cbm_app_training/screens/billing_proof.dart';
 import 'package:cbm_app_training/screens/identity_clarification.dart';
 import 'package:cbm_app_training/screens/other_document.dart';
 import 'package:cbm_app_training/screens/success_screen.dart';
@@ -87,20 +90,29 @@ class OnboardingSteps extends StatelessWidget {
                 },
               );
             }),
-            VerificationTile(
-              heading: 'Billing Proof',
-              description:
-                  'Checking to make sure you are an permanent residence.',
-              icon: Icons.payment_outlined,
-              isComplete: false,
-              onTap: () {},
-            ),
+            BlocBuilder<BillingBloc, BillingState>(builder: (context, state) {
+              return VerificationTile(
+                heading: 'Billing Proof',
+                description: 'Verifying your permanent residency status.',
+                icon: Icons.payment_outlined,
+                isComplete: state.done,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const BillingProof(),
+                    ),
+                  );
+                },
+              );
+            }),
             Padding(
               padding: const EdgeInsets.only(top: 30),
               child: Button(
                 isDisabled: context.watch<AboutYouBloc>().state.done &&
                         context.watch<IdentityBloc>().state.done &&
-                        context.watch<WorkPermitBloc>().state.done
+                        context.watch<WorkPermitBloc>().state.done &&
+                        context.watch<BillingBloc>().state.done
                     ? false
                     : true,
                 text: 'Next',

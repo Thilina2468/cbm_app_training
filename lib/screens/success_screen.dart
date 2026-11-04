@@ -31,16 +31,15 @@ class SuccessScreen extends StatelessWidget {
             width: double.infinity,
             height: 650,
             padding: const EdgeInsets.all(40),
-            child: const Column(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  Icons.check_circle_outline_rounded,
-                  color: Colors.white,
-                  size: 100,
+                Image.asset(
+                  'assets/images/confetti.png',
+                  width: 120,
                 ),
-                SizedBox(height: 20),
-                Text(
+                const SizedBox(height: 40),
+                const Text(
                   'Yay, You’ve Joined My CBM!',
                   style: TextStyle(
                     fontSize: 24,
@@ -48,9 +47,9 @@ class SuccessScreen extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(height: 10),
-                Text(
-                  'Your operation was completed successfully.',
+                const SizedBox(height: 20),
+                const Text(
+                  'You can explore My CBM with limited features while we review, your information. Full access will be granted upon verification.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,

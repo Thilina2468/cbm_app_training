@@ -1,4 +1,5 @@
 import 'package:cbm_app_training/bloc/onboarding/pages/about_you/about_you_bloc.dart';
+import 'package:cbm_app_training/bloc/onboarding/pages/billing/billing_bloc.dart';
 import 'package:cbm_app_training/bloc/onboarding/pages/identity/identity_bloc.dart';
 import 'package:cbm_app_training/bloc/onboarding/pages/work_permit/work_permit_bloc.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<WorkPermitBloc>(
           create: (context) => WorkPermitBloc(),
+        ),
+        BlocProvider<BillingBloc>(
+          create: (context) => BillingBloc(),
         ),
       ],
       child: MaterialApp(
