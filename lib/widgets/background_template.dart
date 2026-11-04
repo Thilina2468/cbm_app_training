@@ -20,7 +20,6 @@ class BackgroundTemplate extends StatelessWidget {
       Container(
         width: double.infinity,
         height: double.infinity,
-        alignment: Alignment.bottomCenter,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -31,6 +30,39 @@ class BackgroundTemplate extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      Positioned(
+        top: -80,
+        right: 100,
+        child: Container(
+          width: 600,
+          height: 600,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: const Color.fromARGB(255, 118, 248, 114),
+              width: 3,
+            ),
+          ),
+        ),
+      ),
+      Positioned(
+        top: 40,
+        right: -430,
+        child: Container(
+          width: 600,
+          height: 600,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: const Color.fromARGB(255, 118, 248, 114),
+              width: 3,
+            ),
+          ),
+        ),
+      ),
+      Align(
+        alignment: Alignment.bottomCenter,
         child: Container(
           width: double.infinity,
           height: cardHeight ?? 650,
