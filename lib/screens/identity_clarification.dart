@@ -27,7 +27,7 @@ class _IdentityClarificationState extends State<IdentityClarification> {
         BackgroundTemplate(
             cardHeight: 700,
             title: 'Let’s take a selfie',
-            subtitle: 'Your Selfie will Let us Know It’s Really You.',
+            subtitle: 'Your selfie will let us know it’s really you.',
             child: Column(
               children: [
                 Image.asset(
@@ -58,7 +58,7 @@ class _IdentityClarificationState extends State<IdentityClarification> {
                 Padding(
                   padding: const EdgeInsets.only(top: 80),
                   child: Button(
-                    text: 'I\'m Ready',
+                    text: 'I’m ready',
                     onPressed: () {
                       Navigator.push(
                         context,

@@ -31,19 +31,19 @@ class _AboutYouState extends State<AboutYou> {
           BackgroundTemplate(
             title: 'Tell us a little about you',
             subtitle:
-                'Enter your first, last, and other names exactly as they appear in your national ID. ',
+                'Enter your first, last, and other names exactly as they appear in your national ID.',
             child: Form(
               child: Column(
                 children: [
-                  InputField(hintText: 'National ID'),
+                  InputField(hintText: 'National ID Number'),
                   Padding(
                     padding: EdgeInsets.all(10),
                   ),
-                  InputField(hintText: 'First Name'),
+                  InputField(hintText: 'First name'),
                   Padding(
                     padding: EdgeInsets.all(10),
                   ),
-                  InputField(hintText: 'Last Name'),
+                  InputField(hintText: 'Last name'),
                   Padding(
                     padding: EdgeInsets.all(18),
                   ),
@@ -51,7 +51,7 @@ class _AboutYouState extends State<AboutYou> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        'Optional',
+                        'optional',
                         style: TextStyle(
                           color: Color.fromARGB(255, 111, 110, 110),
                           fontSize: 14,
@@ -62,16 +62,16 @@ class _AboutYouState extends State<AboutYou> {
                   Padding(
                     padding: EdgeInsets.all(3),
                   ),
-                  InputField(hintText: 'Other Names'),
+                  InputField(hintText: 'Other names'),
                   Padding(
                     padding: EdgeInsets.all(10),
                   ),
-                  Date(hintText: 'Date of Birth'),
+                  Date(hintText: 'Date of birth (DD/MM/YYYY)'),
                   Padding(
                     padding: EdgeInsets.all(10),
                   ),
                   Button(
-                    text: 'Continue',
+                    text: 'Next',
                     onPressed: () {
                       context.read<AboutYouBloc>().add(AboutYouSubmitted());
                       Navigator.pop(context);

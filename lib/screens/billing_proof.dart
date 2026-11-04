@@ -29,9 +29,9 @@ class _BillingProofState extends State<BillingProof> {
         children: [
           BackgroundTemplate(
             cardHeight: 630,
-            title: 'Let’s Take a Photo of Your Billing Proof',
+            title: 'Let’s take a photo of your bill',
             subtitle:
-                'We can only accept a photo of your billing proof. That means, no scans or photocopies.',
+                'We can only accept a photo of your bill. That means, no scans or photocopies.',
             child: Column(
               children: [
                 Image.asset(
@@ -46,13 +46,13 @@ class _BillingProofState extends State<BillingProof> {
                       text: 'Make sure you are in a well-lit room',
                     ),
                     Checklist(
-                      text: 'Put your signature on a plain dark surface',
+                      text: 'Put your bill on a plain dark surface',
                     ),
                     Checklist(
-                      text: 'Check there’s no glare on your signature',
+                      text: 'Check there’s no glare on your bill',
                     ),
                     Checklist(
-                      text: 'Check we can see your signature clearly',
+                      text: 'Check we can see your bill clearly',
                     ),
                   ],
                 ),

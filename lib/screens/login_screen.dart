@@ -23,11 +23,11 @@ class _LoginScreenState extends State<LoginScreen> {
         children: [
           BackgroundTemplate(
             title: 'Login',
-            subtitle: 'Please login to your account',
+            subtitle: 'Unlock more with your password.',
             child: Form(
               child: Column(
                 children: [
-                  const InputField(hintText: 'Email'),
+                  const InputField(hintText: 'Username'),
                   const Padding(
                     padding: EdgeInsets.all(10),
                   ),
@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        'Forgot Password?',
+                        'Forgot password?',
                         style: TextStyle(
                           color: Color.fromARGB(255, 111, 110, 110),
                           fontSize: 14,
@@ -98,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        'Need Help?',
+                        'Need help?',
                         style: TextStyle(
                           color: Color.fromARGB(255, 69, 48, 137),
                           fontSize: 15,
@@ -108,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         padding: EdgeInsets.all(10),
                       ),
                       Text(
-                        'More Info',
+                        'More info',
                         style: TextStyle(
                           color: Color.fromARGB(255, 111, 110, 110),
                           fontSize: 15,

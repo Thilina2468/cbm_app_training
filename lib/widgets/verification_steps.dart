@@ -91,7 +91,7 @@ class VerificationTile extends StatelessWidget {
                   top: 0,
                   right: 0,
                   child: Text(
-                    'Completed',
+                    'completed',
                     style: TextStyle(
                       fontSize: 12,
                       color: Color.fromARGB(255, 69, 48, 137),

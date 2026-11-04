@@ -15,7 +15,7 @@ class SuccessScreen extends StatelessWidget {
           BackgroundTemplate(
             cardHeight: 150,
             child: Button(
-              text: "Let's Go",
+              text: "Let’s Go",
               onPressed: () {
                 Navigator.push(
                   context,
@@ -40,7 +40,7 @@ class SuccessScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 40),
                 const Text(
-                  'Yay, You’ve Joined My CBM!',
+                  'Yay, you’ve joined My CBM!',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -49,7 +49,7 @@ class SuccessScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 const Text(
-                  'You can explore My CBM with limited features while we review, your information. Full access will be granted upon verification.',
+                  'You can explore My CBM with limited features while we review your information. Full access will be granted upon verification.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,

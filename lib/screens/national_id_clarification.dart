@@ -65,7 +65,7 @@ class NationalIdClarification extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 60),
                   child: Button(
-                    text: 'I\'m Ready',
+                    text: 'I’m ready',
                     onPressed: () {
                       context.read<IdentityBloc>().add(IdentitySubmitted());
                       Navigator.pop(context);

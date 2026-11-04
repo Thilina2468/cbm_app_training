@@ -32,8 +32,8 @@ class OnboardingSteps extends StatelessWidget {
         ),
       ),
       body: BackgroundTemplate(
-        title: 'Let’s Clarify Your Identity',
-        subtitle: 'We’ll Keep Your Information Secure and Confidential.',
+        title: 'Let’s clarify your identity',
+        subtitle: 'We’ll keep your information secure and confidential.',
         child: Column(
           children: [
             BlocBuilder<AboutYouBloc, AboutYouState>(
@@ -75,7 +75,7 @@ class OnboardingSteps extends StatelessWidget {
             BlocBuilder<WorkPermitBloc, WorkPermitState>(
                 builder: (context, state) {
               return VerificationTile(
-                heading: 'Other Documents',
+                heading: 'Other document',
                 description:
                     'Processing of transactions and services that require your authorization.',
                 icon: Icons.description_outlined,
@@ -92,7 +92,7 @@ class OnboardingSteps extends StatelessWidget {
             }),
             BlocBuilder<BillingBloc, BillingState>(builder: (context, state) {
               return VerificationTile(
-                heading: 'Billing Proof',
+                heading: 'Billing proof',
                 description: 'Verifying your permanent residency status.',
                 icon: Icons.payment_outlined,
                 isComplete: state.done,
