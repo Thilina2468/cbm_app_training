@@ -26,13 +26,11 @@ class VerificationTile extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: isComplete
-              ? const Color.fromARGB(255, 223, 222, 222)
+              ? const Color.fromARGB(255, 235, 233, 233)
               : Colors.white,
           borderRadius: BorderRadius.circular(15),
           border: isComplete
-              ? Border.all(
-                  color: const Color.fromARGB(255, 223, 222, 222)
-                )
+              ? Border.all(color: const Color.fromARGB(255, 223, 222, 222))
               : Border.all(
                   color: const Color.fromARGB(255, 143, 142, 142),
                 ),
@@ -80,11 +78,12 @@ class VerificationTile extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    color: Color.fromARGB(255, 31, 31, 32),
-                    size: 16,
-                  ),
+                  if (!isComplete)
+                    const Icon(
+                      Icons.arrow_forward_ios_rounded,
+                      color: Color.fromARGB(255, 31, 31, 32),
+                      size: 16,
+                    ),
                 ],
               ),
               if (isComplete)

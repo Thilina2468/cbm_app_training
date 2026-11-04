@@ -5,6 +5,7 @@ class Button extends StatelessWidget {
   final BorderRadiusGeometry borderRadius;
   final VoidCallback onPressed;
   final bool isTransparent;
+  final bool? isDisabled;
 
   const Button({
     super.key,
@@ -12,6 +13,7 @@ class Button extends StatelessWidget {
     required this.onPressed,
     required this.borderRadius,
     this.isTransparent = false,
+    this.isDisabled,
   });
 
   @override
@@ -23,26 +25,40 @@ class Button extends StatelessWidget {
         borderRadius: borderRadius,
         color: isTransparent
             ? Colors.transparent
-            : const Color.fromARGB(255, 69, 48, 137),
+            : isDisabled == true
+                ? const Color.fromARGB(255, 223, 222, 222)
+                : const Color.fromARGB(255, 69, 48, 137),
         border: isTransparent
             ? Border.all(
-                color: const Color.fromARGB(255, 69, 48, 137),
+                color: isDisabled == true
+                    ? Colors.grey
+                    : const Color.fromARGB(255, 69, 48, 137),
                 width: 1.5,
               )
             : null,
       ),
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.transparent,
-          shadowColor: Colors.transparent,
-          foregroundColor: isTransparent
-              ? const Color.fromARGB(255, 69, 48, 137)
-              : Colors.white,
-          textStyle: const TextStyle(fontSize: 17),
-        ),
-        child: Text(text),
-      ),
+      child: isDisabled == true
+          ? Center(
+              child: Text(
+                text,
+                style: const TextStyle(
+                  color: Colors.grey,
+                  fontSize: 17,
+                ),
+              ),
+            )
+          : ElevatedButton(
+              onPressed: onPressed,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.transparent,
+                shadowColor: Colors.transparent,
+                foregroundColor: isTransparent
+                    ? const Color.fromARGB(255, 69, 48, 137)
+                    : Colors.white,
+                textStyle: const TextStyle(fontSize: 17),
+              ),
+              child: Text(text),
+            ),
     );
   }
 }

@@ -1,11 +1,11 @@
-import 'package:cbm_app_training/bloc/identity/identity_bloc.dart';
-import 'package:cbm_app_training/bloc/identity/identity_event.dart';
+import 'package:cbm_app_training/bloc/onboarding/pages/about_you/about_you_bloc.dart';
+import 'package:cbm_app_training/bloc/onboarding/pages/about_you/about_you_event.dart';
+import 'package:cbm_app_training/widgets/background_template.dart';
+import 'package:cbm_app_training/widgets/button.dart';
+import 'package:cbm_app_training/widgets/date.dart';
+import 'package:cbm_app_training/widgets/input_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../widgets/background_template.dart';
-import '../widgets/button.dart';
-import '../widgets/date.dart';
-import '../widgets/input_field.dart';
 
 class AboutYou extends StatefulWidget {
   const AboutYou({super.key});
@@ -73,7 +73,7 @@ class _AboutYouState extends State<AboutYou> {
                   Button(
                     text: 'Continue',
                     onPressed: () {
-                      context.read<IdentityBloc>().add(AboutYouCompleted());
+                      context.read<AboutYouBloc>().add(AboutYouSubmitted());
                       Navigator.pop(context);
                     },
                     borderRadius: BorderRadius.circular(14),

@@ -26,9 +26,8 @@ class BackgroundTemplate extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color(0xFF4A148C),
-              Color(0xFF281865),
-              Color(0xFF1A1245),
+              Color.fromRGBO(71, 17, 101, 1),
+              Color.fromRGBO(54, 60, 147, 1),
             ],
           ),
         ),
@@ -48,7 +47,7 @@ class BackgroundTemplate extends StatelessWidget {
       ),
       if (title != null || subtitle != null)
         Padding(
-          padding: const EdgeInsets.only(top: 100, left: 34),
+          padding: const EdgeInsets.only(top: 70, left: 34, right: 25),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

@@ -4,8 +4,8 @@ import 'identity_state.dart';
 
 class IdentityBloc extends Bloc<IdentityEvent, IdentityState> {
   IdentityBloc() : super(const IdentityState()) {
-    on<AboutYouCompleted>((event, emit) {
-      emit(const IdentityState(aboutYouDone: true));
+    on<IdentitySubmitted>((event, emit) {
+      emit(const IdentityState(done: true));
     });
   }
 }

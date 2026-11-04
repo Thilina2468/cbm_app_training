@@ -1,8 +1,8 @@
-import 'package:cbm_app_training/screens/identity_clarification.dart';
+import 'package:cbm_app_training/screens/onboarding_steps.dart';
 import 'package:cbm_app_training/widgets/background_template.dart';
+import 'package:cbm_app_training/widgets/button.dart';
+import 'package:cbm_app_training/widgets/input_field.dart';
 import 'package:flutter/material.dart';
-import '../widgets/input_field.dart';
-import '../widgets/button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -68,10 +68,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const IdentityClarification(),
+                          builder: (context) => const OnboardingSteps(),
                         ),
                       );
-                      
                     },
                     borderRadius: BorderRadius.circular(20),
                   ),
