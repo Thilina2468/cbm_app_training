@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kyc_practice_app/core/constants/app_colors.dart';
+import 'package:kyc_practice_app/core/constants/app_sizes.dart';
+import 'package:kyc_practice_app/core/theme/app_styles.dart';
 
 class Button extends StatelessWidget {
   final String text;
@@ -20,20 +23,20 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 45,
+      height: AppSizes.buttonHeight,
       decoration: BoxDecoration(
         borderRadius: borderRadius,
         color: isTransparent
             ? Colors.transparent
             : isDisabled == true
-                ? const Color.fromARGB(255, 223, 222, 222)
-                : const Color.fromARGB(255, 69, 48, 137),
+                ? AppColors.surfaceMuted
+                : AppColors.primary,
         border: isTransparent
             ? Border.all(
                 color: isDisabled == true
-                    ? Colors.grey
-                    : const Color.fromARGB(255, 69, 48, 137),
-                width: 1.5,
+                    ? AppColors.textDisabled
+                    : AppColors.primary,
+                width: AppSizes.borderWidthThick,
               )
             : null,
       ),
@@ -41,10 +44,8 @@ class Button extends StatelessWidget {
           ? Center(
               child: Text(
                 text,
-                style: const TextStyle(
-                  color: Colors.grey,
-                  fontSize: 17,
-                ),
+                style: AppStyles.button(context)
+                    .copyWith(color: AppColors.textDisabled),
               ),
             )
           : ElevatedButton(
@@ -52,10 +53,9 @@ class Button extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.transparent,
                 shadowColor: Colors.transparent,
-                foregroundColor: isTransparent
-                    ? const Color.fromARGB(255, 69, 48, 137)
-                    : Colors.white,
-                textStyle: const TextStyle(fontSize: 17),
+                foregroundColor:
+                    isTransparent ? AppColors.primary : AppColors.white,
+                textStyle: AppStyles.button(context),
               ),
               child: Text(text),
             ),

@@ -1,8 +1,11 @@
 import 'package:kyc_practice_app/features/onboarding/bloc/pages/billing/billing_bloc.dart';
 import 'package:kyc_practice_app/features/onboarding/bloc/pages/billing/billing_event.dart';
+import 'package:kyc_practice_app/core/constants/app_sizes.dart';
 import 'package:kyc_practice_app/core/widgets/background_template.dart';
 import 'package:kyc_practice_app/core/widgets/button.dart';
 import 'package:kyc_practice_app/core/widgets/checklist.dart';
+import 'package:kyc_practice_app/core/widgets/app_back_bar.dart';
+import 'package:kyc_practice_app/core/widgets/illustration.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,28 +21,25 @@ class _BillingProofState extends State<BillingProof> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new,
-              color: Colors.white, size: 20),
-          onPressed: () => Navigator.pop(context),
-        ),
-      ),
+      appBar: const AppBackBar(),
       body: Stack(
         children: [
           BackgroundTemplate(
-            cardHeight: 630,
             title: 'Let’s take a photo of your bill',
             subtitle:
                 'We can only accept a photo of your bill. That means, no scans or photocopies.',
+            footer: Button(
+              text: 'Next',
+              onPressed: () {
+                context.read<BillingBloc>().add(BillingSubmitted());
+                Navigator.pop(context);
+              },
+              borderRadius: BorderRadius.circular(AppSizes.radiusMd),
+            ),
             child: Column(
               children: [
-                Image.asset(
-                  'assets/images/billing_proof.png',
-                  height: 200,
-                  width: 300,
-                ),
-                Column(
+                Illustration('assets/images/billing_proof.png'),
+                const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Checklist(
@@ -55,17 +55,6 @@ class _BillingProofState extends State<BillingProof> {
                       text: 'Check we can see your bill clearly',
                     ),
                   ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 60),
-                  child: Button(
-                    text: 'Next',
-                    onPressed: () {
-                      context.read<BillingBloc>().add(BillingSubmitted());
-                      Navigator.pop(context);
-                    },
-                    borderRadius: BorderRadius.circular(14),
-                  ),
                 ),
               ],
             ),

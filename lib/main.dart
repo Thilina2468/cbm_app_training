@@ -4,8 +4,8 @@ import 'package:kyc_practice_app/features/onboarding/bloc/pages/identity/identit
 import 'package:kyc_practice_app/features/onboarding/bloc/pages/work_permit/work_permit_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kyc_practice_app/core/theme/app_theme.dart';
 import 'features/auth/screens/login_screen.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,13 +32,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        theme: ThemeData(
-          textTheme: GoogleFonts.poppinsTextTheme(),
-          appBarTheme: const AppBarTheme(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-          ),
-        ),
+        theme: AppTheme.light(),
         debugShowCheckedModeBanner: false,
         home: const LoginScreen(),
       ),

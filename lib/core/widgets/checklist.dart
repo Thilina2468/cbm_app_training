@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kyc_practice_app/core/constants/app_space.dart';
+import 'package:kyc_practice_app/core/constants/app_colors.dart';
+import 'package:kyc_practice_app/core/constants/app_sizes.dart';
+import 'package:kyc_practice_app/core/theme/app_styles.dart';
 
 class Checklist extends StatelessWidget {
   final String text;
@@ -10,27 +14,23 @@ class Checklist extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 15),
+        padding: const EdgeInsets.only(bottom: AppSpace.s16),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             image ??
                 Image.asset(
                   'assets/images/checkmark.png',
-                  height: 24,
-                  width: 24,
+                  height: AppSizes.iconMd,
+                  width: AppSizes.iconMd,
                 ),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.only(
-                  left: 15,
-                ),
+                padding: const EdgeInsets.only(left: AppSpace.s16),
                 child: Text(
                   text,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                  ),
+                  style: AppStyles.bodyLarge(context)
+                      .copyWith(color: AppColors.textPrimary),
                 ),
               ),
             ),

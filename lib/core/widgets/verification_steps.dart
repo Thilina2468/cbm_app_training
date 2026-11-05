@@ -1,101 +1,104 @@
 import 'package:flutter/material.dart';
+import 'package:kyc_practice_app/core/constants/app_space.dart';
+import 'package:kyc_practice_app/core/constants/app_colors.dart';
+import 'package:kyc_practice_app/core/constants/app_sizes.dart';
+import 'package:kyc_practice_app/core/theme/app_styles.dart';
 
 class VerificationTile extends StatelessWidget {
-  final IconData icon;
+  final String iconAsset;
   final String heading;
   final String description;
   final bool isComplete;
+  final bool isLocked;
   final VoidCallback onTap;
 
   const VerificationTile({
     super.key,
     required this.heading,
     required this.description,
-    required this.icon,
+    required this.iconAsset,
     required this.isComplete,
     required this.onTap,
+    this.isLocked = false,
   });
+
+  bool get isActive => !isComplete && !isLocked;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: isComplete ? null : onTap,
+      onTap: isActive ? onTap : null,
       child: Container(
         width: double.infinity,
-        margin: const EdgeInsets.only(bottom: 15),
-        padding: const EdgeInsets.all(10),
+        margin: const EdgeInsets.only(bottom: AppSpace.s16),
+        padding: const EdgeInsets.all(AppSpace.s4),
         decoration: BoxDecoration(
-          color: isComplete
-              ? const Color.fromARGB(255, 235, 233, 233)
-              : Colors.white,
-          borderRadius: BorderRadius.circular(15),
-          border: isComplete
-              ? Border.all(color: const Color.fromARGB(255, 223, 222, 222))
-              : Border.all(
-                  color: const Color.fromARGB(255, 143, 142, 142),
-                ),
+          color: isLocked ? AppColors.surfaceMuted : AppColors.white,
+          borderRadius: BorderRadius.circular(AppSizes.radiusMd),
+          border: Border.all(color: AppColors.border),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(7),
+          padding: const EdgeInsets.all(AppSpace.s8),
           child: Stack(
             children: [
               Row(
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(AppSpace.s12),
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 100, 99, 99)
-                          .withOpacity(0.1),
+                      color: AppColors.textMuted.withOpacity(0.1),
                       shape: BoxShape.circle,
                     ),
-                    child: Icon(
-                      icon,
-                      size: 22,
-                      color: const Color.fromARGB(255, 69, 48, 137),
+                    child: Image.asset(
+                      iconAsset,
+                      width: AppSizes.iconSm,
+                      height: AppSizes.iconSm,
+                      color: isLocked ? AppColors.textMuted : null,
                     ),
                   ),
-                  const SizedBox(width: 15),
+                  AppSpace.w16,
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           heading,
-                          style: const TextStyle(
-                            fontSize: 16,
+                          style: AppStyles.bodyLarge(context).copyWith(
                             fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                            color: isLocked
+                                ? AppColors.textSecondary
+                                : AppColors.textPrimary,
                           ),
                         ),
-                        const SizedBox(height: 5),
+                        AppSpace.h4,
                         Text(
                           description,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            color: Color.fromARGB(255, 77, 76, 76),
+                          style: AppStyles.body(context).copyWith(
+                            color: isLocked
+                                ? AppColors.textMuted
+                                : AppColors.textSecondary,
                           ),
                         ),
                       ],
                     ),
                   ),
-                  if (!isComplete)
-                    const Icon(
-                      Icons.arrow_forward_ios_rounded,
-                      color: Color.fromARGB(255, 31, 31, 32),
-                      size: 16,
-                    ),
+                  AppSpace.w16,
+                  const Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    color: AppColors.textSecondary,
+                    size: AppSizes.iconXs,
+                  ),
                 ],
               ),
               if (isComplete)
-                const Positioned(
-                  top: 0,
+                Positioned(
+                  top: -4,
                   right: 0,
                   child: Text(
                     'completed',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Color.fromARGB(255, 69, 48, 137),
-                      fontWeight: FontWeight.bold,
+                    style: AppStyles.body(context).copyWith(
+                      color: AppColors.textSecondary,
+                      fontSize: 11,
                     ),
                   ),
                 ),

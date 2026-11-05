@@ -1,9 +1,13 @@
 import 'package:kyc_practice_app/features/onboarding/bloc/pages/about_you/about_you_bloc.dart';
 import 'package:kyc_practice_app/features/onboarding/bloc/pages/about_you/about_you_event.dart';
+import 'package:kyc_practice_app/core/constants/app_space.dart';
+import 'package:kyc_practice_app/core/constants/app_sizes.dart';
+import 'package:kyc_practice_app/core/theme/app_styles.dart';
 import 'package:kyc_practice_app/core/widgets/background_template.dart';
 import 'package:kyc_practice_app/core/widgets/button.dart';
 import 'package:kyc_practice_app/core/widgets/date.dart';
 import 'package:kyc_practice_app/core/widgets/input_field.dart';
+import 'package:kyc_practice_app/core/widgets/app_back_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,65 +23,40 @@ class _AboutYouState extends State<AboutYou> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new,
-              color: Colors.white, size: 20),
-          onPressed: () => Navigator.pop(context),
-        ),
-      ),
+      appBar: const AppBackBar(),
       body: Stack(
         children: [
           BackgroundTemplate(
             title: 'Tell us a little about you',
             subtitle:
                 'Enter your first, last, and other names exactly as they appear in your national ID.',
+            footer: Button(
+              text: 'Next',
+              onPressed: () {
+                context.read<AboutYouBloc>().add(AboutYouSubmitted());
+                Navigator.pop(context);
+              },
+              borderRadius: BorderRadius.circular(AppSizes.radiusMd),
+            ),
             child: Form(
               child: Column(
                 children: [
-                  InputField(hintText: 'National ID Number'),
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                  ),
-                  InputField(hintText: 'First name'),
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                  ),
-                  InputField(hintText: 'Last name'),
-                  Padding(
-                    padding: EdgeInsets.all(18),
-                  ),
+                  const InputField(hintText: 'National ID Number'),
+                  AppSpace.h20,
+                  const InputField(hintText: 'First name'),
+                  AppSpace.h20,
+                  const InputField(hintText: 'Last name'),
+                  AppSpace.h24,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        'optional',
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 111, 110, 110),
-                          fontSize: 14,
-                        ),
-                      ),
+                      Text('optional', style: AppStyles.body(context)),
                     ],
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(3),
-                  ),
-                  InputField(hintText: 'Other names'),
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                  ),
-                  Date(hintText: 'Date of birth (DD/MM/YYYY)'),
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                  ),
-                  Button(
-                    text: 'Next',
-                    onPressed: () {
-                      context.read<AboutYouBloc>().add(AboutYouSubmitted());
-                      Navigator.pop(context);
-                    },
-                    borderRadius: BorderRadius.circular(14),
-                  ),
+                  AppSpace.h8,
+                  const InputField(hintText: 'Other names'),
+                  AppSpace.h20,
+                  const Date(hintText: 'Date of birth (DD/MM/YYYY)'),
                 ],
               ),
             ),

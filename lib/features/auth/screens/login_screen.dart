@@ -1,4 +1,8 @@
 import 'package:kyc_practice_app/features/onboarding/screens/onboarding_steps.dart';
+import 'package:kyc_practice_app/core/constants/app_colors.dart';
+import 'package:kyc_practice_app/core/constants/app_space.dart';
+import 'package:kyc_practice_app/core/constants/app_sizes.dart';
+import 'package:kyc_practice_app/core/theme/app_styles.dart';
 import 'package:kyc_practice_app/core/widgets/background_template.dart';
 import 'package:kyc_practice_app/core/widgets/button.dart';
 import 'package:kyc_practice_app/core/widgets/input_field.dart';
@@ -12,6 +16,12 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  static const double _pillHeight = 36;
+  static const double _pillWidth = 116;
+  static const double _pillPaddingLeft = 20;
+  static const double _footerRowHeight = 42;
+  static const double _languageTop = 70;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,39 +38,34 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 children: [
                   const InputField(hintText: 'Username'),
-                  const Padding(
-                    padding: EdgeInsets.all(10),
-                  ),
+                  AppSpace.h20,
                   const InputField(
                     hintText: 'Password',
-                    icon: Icons.visibility_off_rounded,
+                    iconAsset: 'assets/images/eye_off.png',
                   ),
-                  const Padding(
-                    padding: EdgeInsets.all(10),
-                  ),
-                  const Row(
+                  AppSpace.h20,
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        'Forgot password?',
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 111, 110, 110),
-                          fontSize: 14,
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top: AppSpace.s12,
+                          bottom: AppSpace.s4,
+                        ),
+                        child: Text(
+                          'Forgot password?',
+                          style: AppStyles.body(context),
                         ),
                       ),
                     ],
                   ),
-                  const Padding(
-                    padding: EdgeInsets.all(10),
-                  ),
+                  AppSpace.h20,
                   Button(
                     text: 'Login',
                     onPressed: () {},
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(AppSizes.radiusXl),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.all(10),
-                  ),
+                  AppSpace.h20,
                   Button(
                     text: 'Register',
                     isTransparent: true,
@@ -72,88 +77,87 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       );
                     },
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(AppSizes.radiusMd),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.all(10),
-                  ),
+                  AppSpace.h32,
                   const Divider(
-                    color: Color.fromARGB(255, 141, 140, 140),
-                    thickness: 1,
+                    color: AppColors.borderDivider,
+                    thickness: AppSizes.borderWidth,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.all(10),
-                  ),
-                  const Text(
+                  AppSpace.h24,
+                  Text(
                     'Kill Account',
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 141, 140, 140),
-                      fontSize: 17,
+                    style: AppStyles.bodyLarge(context).copyWith(
+                      color: AppColors.textMuted.withOpacity(0.5),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.all(15),
-                  ),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        'Need help?',
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 69, 48, 137),
-                          fontSize: 15,
+                  AppSpace.h32,
+                  SizedBox(
+                    height: _footerRowHeight,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text('Need help?', style: AppStyles.link(context)),
+                        AppSpace.w16,
+                        Text(
+                          'More info',
+                          style: AppStyles.link(context)
+                              .copyWith(color: AppColors.textSecondary),
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(10),
-                      ),
-                      Text(
-                        'More info',
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 111, 110, 110),
-                          fontSize: 15,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(30),
-                  ),
-                  const Text(
-                    'By using My CBM, you agree to our Terms of use and Privacy Policy',
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 111, 110, 110),
-                      fontSize: 16,
+                      ],
                     ),
-                    textAlign: TextAlign.center,
+                  ),
+                  AppSpace.h48,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: AppSpace.s16,
+                    ),
+                    child: Text(
+                      'By using My CBM, you agree to our Terms of use and Privacy Policy',
+                      style: AppStyles.body(context),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ],
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 70, right: 40),
+            padding: const EdgeInsets.only(
+              top: _languageTop,
+              right: AppSpace.s32,
+            ),
             child: Align(
               alignment: Alignment.topRight,
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  textStyle: const TextStyle(fontSize: 17),
-                ),
-                child: const Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text('English'),
-                    Padding(
-                      padding: EdgeInsets.all(5),
+              child: GestureDetector(
+                onTap: () {},
+                child: Container(
+                  height: _pillHeight,
+                  width: _pillWidth,
+                  padding: const EdgeInsets.only(
+                    left: _pillPaddingLeft,
+                    right: AppSpace.s12,
+                  ),
+                  decoration: const BoxDecoration(
+                    color: AppColors.surfaceCreditCard,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(AppSizes.radiusFull),
                     ),
-                    Icon(
-                      Icons.arrow_drop_down_sharp,
-                      color: Colors.grey,
-                      size: 22,
+                  ),
+                  child: Center(
+                    child: Row(
+                      children: [
+                        Text('English', style: AppStyles.body(context)),
+                        AppSpace.w8,
+                        const Icon(
+                          Icons.keyboard_arrow_down,
+                          color: AppColors.textSecondary,
+                          size: AppSizes.iconSm,
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
             ),

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kyc_practice_app/core/constants/app_colors.dart';
+import 'package:kyc_practice_app/core/constants/app_sizes.dart';
+import 'package:kyc_practice_app/core/constants/app_space.dart';
+import 'package:kyc_practice_app/core/theme/app_styles.dart';
 
 class Date extends StatefulWidget {
   final String hintText;
@@ -36,26 +40,22 @@ class _DateState extends State<Date> {
       onTap: _pickDate,
       decoration: InputDecoration(
         enabledBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(15)),
-          borderSide: BorderSide(
-            color: Color.fromARGB(255, 148, 147, 147),
-          ),
+          borderRadius: BorderRadius.all(Radius.circular(AppSizes.radiusMd)),
+          borderSide: BorderSide(color: AppColors.textDisabled),
         ),
         focusedBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(8)),
-          borderSide: BorderSide(
-            color: Color.fromARGB(255, 88, 88, 88),
-          ),
+          borderRadius: BorderRadius.all(Radius.circular(AppSizes.radiusMd)),
+          borderSide: BorderSide(color: AppColors.borderFocused),
         ),
         labelText: widget.hintText,
-        labelStyle: const TextStyle(
-          color: Color.fromARGB(255, 148, 147, 147),
-          fontSize: 14,
-        ),
-        suffixIcon: const Icon(
-          Icons.calendar_month_outlined,
-          color: Colors.grey,
-          size: 22,
+        labelStyle: AppStyles.bodyLarge(context),
+        suffixIcon: Padding(
+          padding: const EdgeInsets.all(AppSpace.s12),
+          child: Image.asset(
+            'assets/images/icon_calendar.png',
+            width: AppSizes.iconMd,
+            height: AppSizes.iconMd,
+          ),
         ),
       ),
     );
