@@ -1,3 +1,5 @@
+import 'package:image_picker/image_picker.dart';
+import 'package:kyc_practice_app/core/utils/app_logger.dart';
 import 'package:kyc_practice_app/features/onboarding/bloc/pages/identity/identity_bloc.dart';
 import 'package:kyc_practice_app/features/onboarding/bloc/pages/identity/identity_event.dart';
 import 'package:kyc_practice_app/core/constants/app_space.dart';
@@ -15,6 +17,7 @@ class NationalIdClarification extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ImagePicker picker = ImagePicker();
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: const AppBackBar(),
@@ -26,7 +29,11 @@ class NationalIdClarification extends StatelessWidget {
                 'We can only accept a photo of your original ID. That means, no scans or photocopies.',
             footer: Button(
               text: 'I’m ready',
-              onPressed: () {
+              onPressed: () async {
+                final XFile? photo =
+                    await picker.pickImage(source: ImageSource.camera);
+                if (photo == null || !context.mounted) return;
+                appLog.i('National ID photo taken: ${photo.path}');
                 context.read<IdentityBloc>().add(IdentitySubmitted());
                 Navigator.pop(context);
                 Navigator.pop(context);

@@ -3,10 +3,12 @@ import 'package:kyc_practice_app/core/constants/app_colors.dart';
 import 'package:kyc_practice_app/core/constants/app_space.dart';
 import 'package:kyc_practice_app/core/constants/app_sizes.dart';
 import 'package:kyc_practice_app/core/theme/app_styles.dart';
+import 'package:kyc_practice_app/core/utils/validators.dart';
 import 'package:kyc_practice_app/core/widgets/background_template.dart';
 import 'package:kyc_practice_app/core/widgets/button.dart';
 import 'package:kyc_practice_app/core/widgets/input_field.dart';
 import 'package:flutter/material.dart';
+import 'package:kyc_practice_app/features/success/screens/success_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -16,11 +18,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  static const double _pillHeight = 36;
-  static const double _pillWidth = 116;
-  static const double _pillPaddingLeft = 20;
-  static const double _footerRowHeight = 42;
-  static const double _languageTop = 70;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +33,20 @@ class _LoginScreenState extends State<LoginScreen> {
             title: 'Login',
             subtitle: 'Unlock more with your password.',
             child: Form(
+              key: _formKey,
               child: Column(
                 children: [
-                  const InputField(hintText: 'Username'),
+                  InputField(
+                    hintText: 'Username',
+                    validator: (value) =>
+                        Validators.required(value, 'Username is required'),
+                  ),
                   AppSpace.h20,
-                  const InputField(
+                  InputField(
                     hintText: 'Password',
                     iconAsset: 'assets/images/eye_off.png',
+                    validator: (value) =>
+                        Validators.required(value, 'Password is required'),
                   ),
                   AppSpace.h20,
                   Row(
@@ -62,7 +67,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   AppSpace.h20,
                   Button(
                     text: 'Login',
-                    onPressed: () {},
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SuccessScreen(),
+                          ),
+                        );
+                      }
+                    },
                     borderRadius: BorderRadius.circular(AppSizes.radiusXl),
                   ),
                   AppSpace.h20,
@@ -93,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   AppSpace.h32,
                   SizedBox(
-                    height: _footerRowHeight,
+                    height: AppSizes.loginFooterRowHeight,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -125,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           Padding(
             padding: const EdgeInsets.only(
-              top: _languageTop,
+              top: AppSizes.languagePillTop,
               right: AppSpace.s32,
             ),
             child: Align(
@@ -133,10 +147,10 @@ class _LoginScreenState extends State<LoginScreen> {
               child: GestureDetector(
                 onTap: () {},
                 child: Container(
-                  height: _pillHeight,
-                  width: _pillWidth,
+                  height: AppSizes.languagePillHeight,
+                  width: AppSizes.languagePillWidth,
                   padding: const EdgeInsets.only(
-                    left: _pillPaddingLeft,
+                    left: AppSizes.languagePillPaddingLeft,
                     right: AppSpace.s12,
                   ),
                   decoration: const BoxDecoration(

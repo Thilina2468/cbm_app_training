@@ -9,7 +9,8 @@ import 'package:kyc_practice_app/core/widgets/app_back_bar.dart';
 import 'package:kyc_practice_app/core/widgets/illustration.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:image_picker/image_picker.dart';
+import 'package:kyc_practice_app/core/utils/app_logger.dart';
 class OtherDocument extends StatefulWidget {
   const OtherDocument({super.key});
 
@@ -31,7 +32,11 @@ class _OtherDocumentState extends State<OtherDocument> {
                 'We can only accept a photo of your work permit. That means, no scans or photocopies.',
             footer: Button(
               text: 'Next',
-              onPressed: () {
+              onPressed: () async {
+                final XFile? photo =
+                    await ImagePicker().pickImage(source: ImageSource.camera);
+                if (photo == null || !context.mounted) return;
+                appLog.i('Work permit photo taken: ${photo.path}');
                 context.read<WorkPermitBloc>().add(WorkPermitSubmitted());
                 Navigator.pop(context);
               },

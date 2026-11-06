@@ -1,8 +1,10 @@
+import 'package:flutter/services.dart';
 import 'package:kyc_practice_app/features/onboarding/bloc/pages/about_you/about_you_bloc.dart';
 import 'package:kyc_practice_app/features/onboarding/bloc/pages/about_you/about_you_event.dart';
 import 'package:kyc_practice_app/core/constants/app_space.dart';
 import 'package:kyc_practice_app/core/constants/app_sizes.dart';
 import 'package:kyc_practice_app/core/theme/app_styles.dart';
+import 'package:kyc_practice_app/core/utils/validators.dart';
 import 'package:kyc_practice_app/core/widgets/background_template.dart';
 import 'package:kyc_practice_app/core/widgets/button.dart';
 import 'package:kyc_practice_app/core/widgets/date.dart';
@@ -19,6 +21,8 @@ class AboutYou extends StatefulWidget {
 }
 
 class _AboutYouState extends State<AboutYou> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,19 +37,43 @@ class _AboutYouState extends State<AboutYou> {
             footer: Button(
               text: 'Next',
               onPressed: () {
-                context.read<AboutYouBloc>().add(AboutYouSubmitted());
-                Navigator.pop(context);
+                if (_formKey.currentState!.validate()) {
+                  context.read<AboutYouBloc>().add(AboutYouSubmitted());
+                  Navigator.pop(context);
+                }
               },
               borderRadius: BorderRadius.circular(AppSizes.radiusMd),
             ),
             child: Form(
+              key: _formKey,
               child: Column(
                 children: [
-                  const InputField(hintText: 'National ID Number'),
+                  InputField(
+                    hintText: 'National ID Number',
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(RegExp(r'[vV0-9]'))
+                    ],
+                    validator: (value) => Validators.required(
+                        value, 'National ID number is required'),
+                  ),
                   AppSpace.h20,
-                  const InputField(hintText: 'First name'),
+                  InputField(
+                    hintText: 'First name',
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z]'))
+                    ],
+                    validator: (value) =>
+                        Validators.required(value, 'First name is required'),
+                  ),
                   AppSpace.h20,
-                  const InputField(hintText: 'Last name'),
+                  InputField(
+                    hintText: 'Last name',
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z]'))
+                    ],
+                    validator: (value) =>
+                        Validators.required(value, 'Last name is required'),
+                  ),
                   AppSpace.h24,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -56,7 +84,10 @@ class _AboutYouState extends State<AboutYou> {
                   AppSpace.h8,
                   const InputField(hintText: 'Other names'),
                   AppSpace.h20,
-                  const Date(hintText: 'Date of birth (DD/MM/YYYY)'),
+                  Date(
+                      hintText: 'Date of birth (DD/MM/YYYY)',
+                      validator: (value) =>
+                          Validators.age(value, 'Date of birth is required')),
                 ],
               ),
             ),

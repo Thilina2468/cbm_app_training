@@ -7,9 +7,6 @@ import 'package:kyc_practice_app/core/widgets/button.dart';
 import 'package:flutter/material.dart';
 
 class SuccessScreen extends StatelessWidget {
-  static const double _contentHeight = 650;
-  static const double _confettiWidth = 120;
-
   const SuccessScreen({super.key});
 
   @override
@@ -22,27 +19,27 @@ class SuccessScreen extends StatelessWidget {
             footer: Button(
               text: "Let’s Go",
               onPressed: () {
-                Navigator.push(
+                Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
                     builder: (context) => const LoginScreen(),
                   ),
+                  (route) => false,
                 );
               },
               borderRadius: BorderRadius.circular(AppSizes.radiusLg),
             ),
-            child: const SizedBox.shrink(),
           ),
           Container(
             width: double.infinity,
-            height: _contentHeight,
+            height: AppSizes.successContentHeight,
             padding: const EdgeInsets.all(AppSpace.s40),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
                   'assets/images/confetti.png',
-                  width: _confettiWidth,
+                  width: AppSizes.confettiWidth,
                 ),
                 AppSpace.h40,
                 Text(
