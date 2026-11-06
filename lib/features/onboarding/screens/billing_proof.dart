@@ -8,7 +8,8 @@ import 'package:kyc_practice_app/core/widgets/app_back_bar.dart';
 import 'package:kyc_practice_app/core/widgets/illustration.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:image_picker/image_picker.dart';
+import 'package:kyc_practice_app/core/utils/app_logger.dart';
 class BillingProof extends StatefulWidget {
   const BillingProof({super.key});
 
@@ -30,7 +31,11 @@ class _BillingProofState extends State<BillingProof> {
                 'We can only accept a photo of your bill. That means, no scans or photocopies.',
             footer: Button(
               text: 'Next',
-              onPressed: () {
+              onPressed: () async {
+                final XFile? photo =
+                    await ImagePicker().pickImage(source: ImageSource.camera);
+                if (photo == null || !context.mounted) return;
+                appLog.i('Billing proof photo taken: ${photo.path}');
                 context.read<BillingBloc>().add(BillingSubmitted());
                 Navigator.pop(context);
               },

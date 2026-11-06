@@ -25,6 +25,8 @@ class OnboardingSteps extends StatelessWidget {
     final bool workDone = context.watch<WorkPermitBloc>().state.done;
     final bool billingDone = context.watch<BillingBloc>().state.done;
 
+    final bool allDone = aboutDone && identityDone && workDone && billingDone;
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: const AppBackBar(),
@@ -96,6 +98,7 @@ class OnboardingSteps extends StatelessWidget {
           ],
         ),
         footer: Button(
+          isDisabled: !allDone,
           text: 'Next',
           onPressed: () {
             Navigator.push(

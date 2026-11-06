@@ -96,10 +96,7 @@ class VerificationTile extends StatelessWidget {
                   right: 0,
                   child: Text(
                     'completed',
-                    style: AppStyles.body(context).copyWith(
-                      color: AppColors.textSecondary,
-                      fontSize: 11,
-                    ),
+                    style: AppStyles.caption(context),
                   ),
                 ),
             ],
